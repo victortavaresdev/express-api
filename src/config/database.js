@@ -2,11 +2,11 @@ const { Pool } = require("node-postgres");
 
 // CONFIG
 const db = new Pool({
-  host: "localhost",
-  user: "postgres",
-  password: "fantasma",
-  port: "5432",
-  database: "teste-express",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
   max: 20,
 });
 
@@ -59,7 +59,6 @@ const createTable = async () => {
     await db.end();
   }
 };
-createTable()
 
 const dropTable = async () => {
   try {
